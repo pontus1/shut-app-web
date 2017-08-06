@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { logoutUser } from '../actions/sessionActions'
-import { button } from 'bootstrap'
 
 class Home extends React.Component {
 

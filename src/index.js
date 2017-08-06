@@ -14,6 +14,8 @@ import { ConnectedRouter } from 'react-router-redux'
 import store, { history } from './store/configureStore'
 import App from './containers/App'
 
+import 'bootstrap/dist/css/bootstrap.css'
+
 const target = document.querySelector('#root')
 
 render(
