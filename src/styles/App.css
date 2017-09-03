@@ -2,3 +2,7 @@
 .active {
   color: red;
 }
+
+nav > * {
+  margin: 0 20px;
+}
