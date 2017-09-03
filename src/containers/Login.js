@@ -31,7 +31,7 @@ class Login extends React.Component {
       <div className='container' style={{border: '1px solid grey', borderRadius: '10px', maxWidth: '500px'}}>
         <div>
           <form onSubmit={this.onSubmit}>
-            <div class='form-group'>
+            <div className='form-group'>
               <label>Email</label>
               <input className='form-control'
                 type='text'
@@ -39,7 +39,7 @@ class Login extends React.Component {
                 placeholder='EMAIL'
                 onChange={e => this.setState({email: e.target.value})} />
             </div>
-            <div class='form-group'>
+            <div className='form-group'>
               <label>Password</label>
               <input className='form-control'
                 type='password'
@@ -47,7 +47,7 @@ class Login extends React.Component {
                 placeholder='PASSWORD'
                 onChange={e => this.setState({password: e.target.value})} />
             </div>
-            <div class='form-group' style={{ textAlign: 'center' }}>
+            <div className='form-group' style={{ textAlign: 'center' }}>
               <button className='btn btn-primary'
                 style={{ margin: '15px' }}
                 type='submit'>
@@ -55,7 +55,8 @@ class Login extends React.Component {
               </button>
             </div>
 
-            <br/> {isLoading && <div>Please wait...</div>}
+            <br/>
+            {isLoading && <div>Please wait...</div>}
             {isLoginSuccess && <div>Success.</div>}
             {loginError && <div>{loginError}</div>}
           </form>

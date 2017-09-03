@@ -1,15 +1,17 @@
 import jwt from 'jwt-simple'
 
-const secret = 'MTIzNDU2'  // TODO: USE ENV
+const secret = 'MTIzNDU2'  // TODO: USE .ENV
 
 const storage = window.localStorage
 const token = storage.getItem('token')
-let user
+let user = {}
 
-// TODO: User try catch to prevent: Error: Signature verification failed
+// TODO: Use try catch to prevent: Error: Signature verification failed
 if (token) {
   const decodedjwt = jwt.decode(token, secret)
-  user = decodedjwt.sub // sub = userId
+  user.id = decodedjwt.sub
+  user.email = decodedjwt.iss
+  user.name = decodedjwt.name
 }
 
 
@@ -25,6 +27,11 @@ const initialState = {
     isFetching: false,
     error: null,
     user: user || null
+  },
+  chatRoom: {
+    messages: [],
+    isFetching: false,
+    error: null
   }
 }
 

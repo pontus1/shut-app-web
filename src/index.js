@@ -7,6 +7,10 @@
 // ReactDOM.render(<App />, document.getElementById('root'));
 // registerServiceWorker();
 
+/* Realtime */
+import { setupRealtime } from './Realtime'
+import * as chatRoomActions from './actions/chatRoomActions' // If more actions needs to be realtime they have to be imported and send to realtime as args
+
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
@@ -28,3 +32,5 @@ render(
   </Provider>,
   target
 )
+
+setupRealtime(store, chatRoomActions)
