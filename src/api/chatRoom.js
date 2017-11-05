@@ -4,17 +4,18 @@ import querystring from 'querystring'
 const storage = window.localStorage
 const serverURL = 'http://localhost:3001'   // TODO: utilize utils
 
-class ChatRoomApi {
+const hardcodedConversationId = 'fa7d69d3-beed-496b-a6b2-4d11f174cd24'
 
+class ChatRoomApi {
   /* GET ALL CHAT MESSAGES */
   // TODO: Implement in backend
-  static getAllChatMessages () {
+  static getAllChatMessages (conversationId) {
     let headers = new Headers({
       'x-api-token': storage.getItem('token'),
       'Content-Type': 'application/x-www-form-urlencoded'
     })
 
-    return fetch(`${serverURL}/chat/message`, {
+    return fetch(`${serverURL}/chat/conversation/${conversationId}`, {
       method: 'GET',
       headers: headers
     })
@@ -33,6 +34,7 @@ class ChatRoomApi {
     })
 
     let body = {
+      conversationId: hardcodedConversationId,
       text: text
     }
 
@@ -47,7 +49,7 @@ class ChatRoomApi {
       return error
     })
   }
-
+// END
 }
 
 export default ChatRoomApi

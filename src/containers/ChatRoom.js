@@ -1,7 +1,7 @@
 // THIS IS A CONTAINER!!!!
 import React from 'react'
 import { connect } from 'react-redux'
-import { postMsg } from '../actions/chatRoomActions'
+import { postMsg, getMessages } from '../actions/chatRoomActions'
 
 class ChatRoom extends React.Component {
   constructor (props) {
@@ -10,6 +10,10 @@ class ChatRoom extends React.Component {
       messageInput: ''
     }
     this.onSubmit = this.onSubmit.bind(this)
+  }
+
+  componentWillMount () {
+    this.props.getMessages()
   }
 
   onSubmit (e) {
@@ -24,7 +28,7 @@ class ChatRoom extends React.Component {
 
     let { messages, isLoading, error } = this.props
 
-    const listItems = this.props.messages.map((message, index) =>
+    const listItems = messages.map((message, index) =>
       <li key={index}>
         { message.text } -- { message.author }
       </li>
@@ -34,9 +38,9 @@ class ChatRoom extends React.Component {
       <div>
         <h1>CHAT ROOM</h1>
 
-          <br/>
-          {isLoading && <div>Please wait...</div>}
-          {error && <div>{error}</div>}
+        <br />
+        {isLoading && <div>Please wait...</div>}
+        {error && <div>{error}</div>}
 
         <div className='container' style={{ position: 'fixed', bottom: '0', width: '100%' }}>
           <ul id='messages'>{ listItems }</ul>
@@ -64,7 +68,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    postMsg: (messageInput) => dispatch(postMsg(messageInput))
+    postMsg: (messageInput) => dispatch(postMsg(messageInput)),
+    getMessages: () => dispatch(getMessages('fa7d69d3-beed-496b-a6b2-4d11f174cd24'))
   }
 }
 
