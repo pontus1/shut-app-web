@@ -34,11 +34,10 @@ class ChatRoomApi {
     })
 
     let body = {
-      conversationId: hardcodedConversationId,
       text: text
     }
 
-    return fetch(`${serverURL}/chat/message`, {
+    return fetch(`${serverURL}/chat/conversation/${hardcodedConversationId}/message`, {
       method: 'POST',
       headers: headers,
       body: querystring.stringify(body)
